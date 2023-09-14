@@ -1,8 +1,50 @@
-# React + Vite
+# FoodMe-Test 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Playground for building a CI/CD process before integrating into my side project
 
-Currently, two official plugins are available:
+## Tech Stack 
+- Firebase: 
+    - Firestore (NoSQL)
+    - Authentication 
+- React with Vite 
+- Tailwindcss
+- Github Actions 
+- Cypress for e2e and component testing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Basic Application Design 
+
+
+```mermaid
+
+flowchart TD
+    LoginPage["/login"]
+    InventoryPage["/fridge"]
+    RecipePage["/recipes"]    
+    ProfilePage["/profile"]
+
+    UserAuth["userAuthentication"]
+
+    LoginPage --> UserAuth 
+    UserAuth --> Authenticated 
+
+    subgraph Authenticated
+        ProfilePage --> RecipePage
+        ProfilePage --> InventoryPage
+    end
+   
+```
+
+---
+### Functions by Page
+#### /profile
+- Dashboard for quick view of items
+
+#### /recipes 
+- Handles recipe searching 
+
+#### /fridge
+- Grocery inventory management 
+
+
+## Firebase Firestore
