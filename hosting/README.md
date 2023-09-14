@@ -2,7 +2,16 @@
 
 Playground for building a CI/CD process before integrating into my side project
 
-## Tech Stack 
+##
+- [Tech Stack](#tech-stack)
+- [Basic Application Design](#basic-application-design)
+    - [Functions by Page](#functions-by-page)
+- [Github](#github)
+    - [Github Actions](#github-actions)
+
+
+
+## [Tech Stack](#tech-stack) 
 - Firebase: 
     - Firestore (NoSQL)
     - Authentication 
@@ -12,7 +21,9 @@ Playground for building a CI/CD process before integrating into my side project
 - Cypress for e2e and component testing
 
 
-## Basic Application Design 
+
+
+## [Basic Application Design](#basic-application-design) 
 
 
 ```mermaid
@@ -35,8 +46,8 @@ flowchart TD
    
 ```
 
----
-### Functions by Page
+
+### [Functions by Page](#functions-by-page)
 #### /profile
 - Dashboard for quick view of items
 
@@ -46,5 +57,10 @@ flowchart TD
 #### /fridge
 - Grocery inventory management 
 
+## [Github](#github)
 
-## Firebase Firestore
+
+
+### [Github Actions](#github-actions)
+
+
