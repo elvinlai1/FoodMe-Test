@@ -2,7 +2,7 @@
 
 Playground for building a CI/CD process before integrating into my side project
 
-##
+## Content
 - [Tech Stack](#tech-stack)
 - [Basic Application Design](#basic-application-design)
     - [Functions by Page](#functions-by-page)
@@ -60,7 +60,51 @@ flowchart TD
 ## [Github](#github)
 
 
+```mermaid
+---
+title: Testing
+---
+gitGraph
+    commit
+    commit id: "Intialize environment" tag: "v0.10"
+    branch alpha
+    checkout alpha
+    commit
+    commit
+    checkout main
+    merge alpha
+    
+```
+Playing with gitGraph
+
 
 ### [Github Actions](#github-actions)
 
+I have been having issues with firebase pre-configured github actions when I want to upload the entire project to github. 
+</br> 
+It runs fine with in a branch with only `/hosting` as the run executes fine possibly without `firebase-tools` packaged.
+<br> 
+For now, I decided to default the working directory to `/hosting` for both merge and pull request workflow
 
+
+```
+defaults:
+  run:
+    shell: bash
+    working-directory: ./hosting
+
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+            ...
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks //required 
+```
+
+I'll be interested in checking out the extension [Changed-Files](https://github.com/tj-actions/changed-files) to see if i can atomize the workflow
