@@ -79,7 +79,7 @@ flowchart TD
     LoginPage["/login"]
     InventoryPage["/fridge"]
     RecipePage["/recipes"]    
-    ProfilePage["/profile"]
+    Dashboard["/dashboard"]
 
     UserAuth["userAuthentication"]
 
@@ -87,8 +87,9 @@ flowchart TD
     UserAuth --> Authenticated 
 
     subgraph Authenticated
-        ProfilePage --> RecipePage
-        ProfilePage --> InventoryPage
+        Dashboard --> RecipePage
+        Dashboard --> InventoryPage
+        Dashboard --> /receipt
     end
    
 ```
@@ -96,7 +97,7 @@ flowchart TD
 
 ### [Functions by Page](#functions-by-page)
 
-#### /profile
+#### /dashboard
 - Dashboard for quick view of items
 
 #### /recipes 
@@ -105,6 +106,11 @@ flowchart TD
 #### /fridge
 - Grocery inventory management 
 
+#### /reciept 
+- reciept management 
+
+<!-- - Once uploaded to Cloud Storage, receipt will be scanned with Google Vision OCR and Document AI
+    - The returned text will be scraped out for item and item price with Google NLP API -->
 
 
 ## [In-depth-breakdown](#in-depth-breakdown)
