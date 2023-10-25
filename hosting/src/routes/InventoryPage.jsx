@@ -8,6 +8,8 @@ function Inventory() {
 
     const {currentUser} = useContext(AuthUserContext);
 
+
+
     const tableProps = {
         name: "Inventory List", 
         header: [
@@ -22,7 +24,8 @@ function Inventory() {
             "itemType",
             "itemQuantity",
             "itemPurchaseDate",
-        ]
+        ],
+
     }
 
 

@@ -19,8 +19,7 @@ import { db } from './firebase';
 
 const USER_INVENTORY_COL = 'user_inventory'; //Recipes, Food Items, Reciepts etc
 const USER_FOOD_ITEMS_COL = 'user_food_items';
-
-const FOOD_ITEMS = 'food_items';
+const USER_RECIEPTS_COL = 'user_reciepts';
 
 //----Test Function
 
@@ -76,21 +75,34 @@ export const listenForUserFoodItemsUpdates = (uid, callback) => {
                 data: doc.data(),
             });
         });
+        
         callback(updatedFoodItems);
     });
 
     return unsubscribe;
 }
 
-// set up real time listner for specified user food itemType
 
 
-// 
+export const updateUserFoodItem = async (uid, userFoodItemID) => {
+    const docRef = doc(db, USER_INVENTORY_COL, uid);
+    const foodItemsCollection = collection(docRef, USER_FOOD_ITEMS_COL);
 
-export const updateUserFoodItem = async (id, userFoodItem) => {
-    await updateDoc(doc(db, 'recipes', id), recipe);
+    await updateDoc(doc(foodItemsCollection, userFoodItemID), {
+        itemQuantity: 2,
+    });
 }
 
-export const deleteUserFoodItems = async (uid, userFoodItems) => {
-    await deleteDoc(doc(db, 'recipes', id));
+export const deleteUserFoodItems = async (uid, userFoodItemID) => {
+    const docRef = doc(db, USER_INVENTORY_COL, uid);
+    const foodItemsCollection = collection(docRef, USER_FOOD_ITEMS_COL);
+
+    await deleteDoc(doc(foodItemsCollection, userFoodItemID));
+}
+
+//----Reciept-----
+
+
+export const addReceipt= async (uid, date, imageBucket) => {
+    addDoc(collection(db, USER_RECIEPTS_COL), { uid, date, imageBucket });
 }

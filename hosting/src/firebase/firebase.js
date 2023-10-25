@@ -8,6 +8,8 @@ import {
     createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
+import { getStorage, connectStorageEmulator} from 'firebase/storage';
+
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
 
@@ -26,6 +28,8 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const db = getFirestore();
+export const storage = getStorage();
+
 
 //----Create User----
 export const createUser = async (email, password, setError) => {
@@ -53,5 +57,7 @@ export const SignOutUser = async () => await signOut(auth);
 
 //connect to firebase emulator
 connectAuthEmulator(auth, "http://127.0.0.1:9099");
+connectStorageEmulator(storage, "127.0.0.1", 9199);
 connectFirestoreEmulator(db, '127.0.0.1', 8080);
+// connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 
