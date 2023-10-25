@@ -11,6 +11,7 @@ import Dashboard from './routes/DashboardPage';
 import Inventory from './routes/InventoryPage';
 import Recipes from './routes/RecipePage';
 import NotFound from './routes/notFound';
+import Reciepts from './routes/RecieptPage';
 
 
 
@@ -37,6 +38,7 @@ function App() {
       <Route path="profile" element={<Profile />}/>
       <Route path="inventory" element={<Inventory />} /> 
       <Route path="recipes" element={<Recipes />} />
+      <Route path="reciept" element={<Reciepts />} />
     </Route>
 
     <Route component={NotFound} /> 

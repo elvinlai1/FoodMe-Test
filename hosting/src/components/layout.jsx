@@ -20,6 +20,9 @@ function Layout(){
                     <li className='rounded p-3 hover:text-white '>
                         <Link className="py-3" to='/recipes'>Recipes</Link>
                     </li>
+                    <li className='rounded p-3 hover:text-white '>
+                        <Link className="py-3" to='/reciept'>Reciept</Link>
+                    </li>
                     <li className="">
                         <button className='rounded p-3 bg-gray-800 text-white
                         hover:bg-gray-400' onClick={signOut}>Sign Out</button> 

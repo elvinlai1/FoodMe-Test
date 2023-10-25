@@ -1,7 +1,19 @@
-
+import React, { useContext } from "react"
+import { updateUserFoodItem, deleteUserFoodItems } from "../firebase/firestore"
+import { AuthUserContext } from "../firebase/AuthUserContext"
 
 export default function Table({tableProps, tableData}) {
     //specificy the tableProps.fieldOrder to determine the order of the fields in the table
+
+    const {currentUser} = useContext(AuthUserContext);
+
+    const handleEdit = (itemID) => {
+        updateUserFoodItem(currentUser?.uid, itemID)
+    }
+
+    const handleDelete = (itemID) => {    
+        deleteUserFoodItems(currentUser?.uid, itemID)
+    }
 
     return (
 
@@ -14,6 +26,7 @@ export default function Table({tableProps, tableData}) {
                         {tableProps.header.map((header, index) => (
                                 <th key={index} className='px-3 py-3'>{header}</th>
                         ))}
+                        <th className='px-3 py-3'></th>
                     </tr>
                 </thead>
 
@@ -22,10 +35,16 @@ export default function Table({tableProps, tableData}) {
                         <tr key={item.id} className="border-b border-gray-400">
                             <td>{item.id}</td>
                             {tableProps.fieldOrder.map((fieldName) => (
-                                    <td key={fieldName} className="p-3"> {item.data[fieldName]}</td>
+                                <td key={fieldName} className="p-4">{item.data[fieldName]}</td>
                             ))}
+                            <td>
+                                <button onClick={()=>handleEdit(item.id)}>Edit</button>
+                                <br></br>
+                                <button onClick={()=>handleDelete(item.id)}>Delete</button>
+                            </td>
                         </tr>
                     ))}
+                        
                 </tbody>
 
             </table>
