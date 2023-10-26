@@ -4,7 +4,7 @@ import { addReceipt } from '../firebase/firestore';
 import { uploadImage } from '../firebase/storage';
 
 
-export default function Reciepts(){
+export default function Receipts(){
 
     const { currentUser } = useContext(AuthUserContext);
     const [file, setFile] = useState(null);

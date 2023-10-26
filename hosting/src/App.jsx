@@ -11,7 +11,7 @@ import Dashboard from './routes/DashboardPage';
 import Inventory from './routes/InventoryPage';
 import Recipes from './routes/RecipePage';
 import NotFound from './routes/notFound';
-import Reciepts from './routes/RecieptPage';
+import Receipts from './routes/ReceiptPage';
 
 
 
@@ -32,13 +32,13 @@ function App() {
   <Routes>
     <Route index element={<Public />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/signup" element={<SignUp />} />
+    {/* <Route path="/signup" element={<SignUp />} /> */}
     <Route path="/*" element= {currentUser ? <Layout /> : <Login /> }>
       <Route path="dashboard" element={<Dashboard />}/>
       <Route path="profile" element={<Profile />}/>
       <Route path="inventory" element={<Inventory />} /> 
       <Route path="recipes" element={<Recipes />} />
-      <Route path="reciept" element={<Reciepts />} />
+      <Route path="receipt" element={<Receipts />} />
     </Route>
 
     <Route component={NotFound} /> 

@@ -5,7 +5,6 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom';
 import { AuthUserProvider } from './firebase/AuthUserContext';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -15,3 +14,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>,
 )
+
