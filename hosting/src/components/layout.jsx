@@ -21,7 +21,7 @@ function Layout(){
                         <Link className="py-3" to='/recipes'>Recipes</Link>
                     </li>
                     <li className='rounded p-3 hover:text-white '>
-                        <Link className="py-3" to='/reciept'>Reciept</Link>
+                        <Link className="py-3" to='/receipt'>Receipt</Link>
                     </li>
                     <li className="">
                         <button className='rounded p-3 bg-gray-800 text-white
