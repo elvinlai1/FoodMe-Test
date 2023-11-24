@@ -17,8 +17,8 @@ import { addDoc,
 import { db } from './firebase';
 
 
-const USER_INVENTORY_COL = 'user_inventory'; //Recipes, Food Items, Reciepts etc
-const USER_FOOD_ITEMS_COL = 'user_food_items';
+const USER_INVENTORY_COL = 'user_inv'; //Recipes, Food Items, Reciepts etc
+const USER_FOOD_ITEMS_COL = 'user_items';
 const USER_RECIEPTS_COL = 'user_reciepts';
 
 //----Test Function
@@ -106,3 +106,4 @@ export const deleteUserFoodItems = async (uid, userFoodItemID) => {
 export const addReceipt= async (uid, date, imageBucket) => {
     addDoc(collection(db, USER_RECIEPTS_COL), { uid, date, imageBucket });
 }
+

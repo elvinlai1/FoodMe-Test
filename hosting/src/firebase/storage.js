@@ -2,10 +2,10 @@ import { format } from 'date-fns';
 import { storage } from "./firebase";
 import { deleteObject, getDownloadURL as getStorageDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
-let BUCKET_URL = "gs://foodme-fcef1.appspot.com/";
+let BUCKET_URL = "gs://foodme-fcef1.appspot.com";
 
+// Point to the Storage emulator running on localhost.
 if (location.hostname === "localhost") {
-  // Point to the Storage emulator running on localhost.
   BUCKET_URL = "http://127.0.0.1:9199/foodsaver-50899.appspot.com";
 } 
 
