@@ -14,6 +14,7 @@ module.exports = {
     "no-restricted-globals": ["error", "name", "length"],
     "prefer-arrow-callback": "error",
     "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+    "eol-last": 0,
   },
   overrides: [
     {
@@ -21,7 +22,8 @@ module.exports = {
       env: {
         mocha: true,
       },
-      rules: {},
+      rules: {
+      },
     },
   ],
   globals: {},

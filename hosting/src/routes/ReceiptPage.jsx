@@ -12,7 +12,6 @@ export default function Receipts(){
     const [ errorDialogMessage, setErrorDialogMessage ] = useState("");
     const [ isErrorDialogOpen, setErrorDialogOpen ] = useState(false);
 
-
     const handleReceiptUpload = async (event) => {
         event.preventDefault();
 
