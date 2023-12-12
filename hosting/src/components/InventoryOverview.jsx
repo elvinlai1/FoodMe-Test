@@ -50,17 +50,9 @@ export default function InventoryOverview() {
 
     return (
         <>
-         <div className='container border border-black p-6 my-6'>
-
-            <div className=''>
-                <p>Inventory Overview</p>
-            </div>
-
-            <div className='h-96 flex flex-col items-center'>
-                <Doughnut options={options} data={data} />
-            </div>
-
-        </div>
+          <div className='h-96 flex flex-col items-center'>
+              <Doughnut options={options} data={data} />
+          </div>
         </>
     )
 }

@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import {Link, Outlet} from 'react-router-dom'
 import { AuthUserContext } from '../firebase/AuthUserContext'
 
+import {Button} from "@tremor/react";
+
 function Layout(){
     const {signOut} = useContext(AuthUserContext)
 
@@ -24,8 +26,8 @@ function Layout(){
                         <Link className="py-3" to='/receipt'>Receipt</Link>
                     </li>
                     <li className="">
-                        <button className='rounded p-3 bg-gray-800 text-white
-                        hover:bg-gray-400' onClick={signOut}>Sign Out</button> 
+                        <Button className='rounded p-3 bg-gray-800 text-white
+                        hover:bg-gray-400' onClick={signOut}>Sign Out</Button> 
                     </li> 
                 </ul>
             </nav>
