@@ -8,32 +8,12 @@
  */
 
 const functions = require("firebase-functions");
+const logger = require("firebase-functions/logger");
 const vision = require("@google-cloud/vision");
+
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
-
-exports.ocrTest = functions.https.onRequest(async (response) => {
-  const client = new vision.ImageAnnotatorClient();
-  const [textDetect] = await client.textDetection("./resources/wakeupcat.jpg");
-  const annotation = textDetect.textAnnotations;
-  const text = annotation ? annotation.description : "";
-  if (text != null) {
-    Array.from(text).forEach((char) => console.log(char));
-    response.send(text);
-  } else {
-    response.send("No text found");
-  }
-});
-
-// firestore triggers
-// exports.onReceiptAdd = functions.firestore
-//   .document("user_reciepts/{recieptId}")
-//   .onCreate((snap, context) => {
-//     const newValue = snap.data();
-//     console.log("New reciept added: ", newValue);
-//     return 0;
-//   });
 
 exports.readReciept = functions.storage
     .object().onFinalize(async (object, response) => {
@@ -44,11 +24,18 @@ exports.readReciept = functions.storage
       const text = annotation ? annotation.description : "";
       if (text != null) {
         Array.from(text).forEach((char) => console.log(char));
-        response.send(text);
       } else {
         response.send("No text found");
       }
     });
 
-
-    
+exports.readRecieptManually = functions.https
+    .onRequest(async (request) => {
+      const imageBucket = request.body.image;
+      logger.log(imageBucket);
+      const client = new vision.ImageAnnotatorClient();
+      const [textDetect] = await client.textDetection(imageBucket);
+      const annotation = textDetect.textAnnotations;
+      const text = annotation ? annotation.description : "";
+      logger.log(text);
+    });

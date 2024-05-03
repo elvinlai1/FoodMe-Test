@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthUserContext } from '../firebase/AuthUserContext';
 import { addReceipt } from '../firebase/firestore';
 import { uploadImage } from '../firebase/storage';
+import {Card, Title, Button} from "@tremor/react";
 
 
 export default function Receipts(){
@@ -59,18 +60,21 @@ export default function Receipts(){
 
 
     return (
-        <div className='flex flex-col items-center justify-center h-screen'>
-            <h1>Reciept</h1>
+        <div className='container mx-auto'>
+            <Card>
 
-            <form method="dialog" onSubmit={handleReceiptUpload}>
-                        <input type="file" accept="image/*" onChange={handleFileChange} />
-                        <button type="submit">Upload</button>
+            <Title>Receipt</Title>
+
+                    <form method="dialog" onSubmit={handleReceiptUpload}>
+                                <input type="file" accept="image/*" onChange={handleFileChange} />
+                                <button type="submit">Upload</button>
                     </form>
-                    <button onClick={()=> 
+                    <Button onClick={()=> 
                             {
                                 setReceiptUploadDialogOpen(false);
                                 setFile(null);
-                                }}>Cancel</button>
+                            }}>Cancel</Button>
+            </Card>
         </div>
     )
 }

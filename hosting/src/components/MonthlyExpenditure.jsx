@@ -68,22 +68,11 @@ const data = {
 
 export default function MonthlyExpenditure() {
 
-    
 
     return (
         <>
-        <div className="container border border-black p-3">
-            <div className="flex flex-col">
-            
-                <p className="uppercase font-bold">This Month's Expenditure</p>
-
-                <p>October 2023</p>
-                <div className='flex flex-col'>
-                    <Bar options={options} data={data} />    
-                </div>
-                    
-                
-            </div>
+        <div className="flex flex-col">
+          <Bar options={options} data={data} />    
         </div>
         </>
     )
